@@ -1,0 +1,42 @@
+{
+  "machine": {
+    "gpu": 1,
+    "cpu": 2000,
+    "ram": 24000
+  },
+  "job": {
+    "APIVersion": "V1beta1",
+    "Spec": {
+      "Deal": {
+        "Concurrency": 1
+      },
+      "Docker": {
+        "Entrypoint": ["python", "/workspace/run_wan2.py"],
+        "EnvironmentVariables": [
+          {{ if .prompt }}"PROMPT={{ .prompt | js }}"{{ else }}"PROMPT=A cat and a dog baking a cake together in a kitchen. The cat is carefully measuring flour, while the dog is stirring the batter with a wooden spoon. The kitchen is cozy, with sunlight streaming through the window."{{ end }},
+          {{ if .negative_prompt }}"NEGATIVE_PROMPT={{ .negative_prompt | js }}"{{ else }}"NEGATIVE_PROMPT="{{ end }}
+        ],
+        "Image": "noryev/wan2-module:latest"
+      },
+      "Engine": "Docker",
+      "Network": {
+        "Type": "None"
+      },
+      "PublisherSpec": {
+        "Type": "IPFS"
+      },
+      "Resources": {
+        "GPU": "1"
+      },
+      "Timeout": 3600,
+      "Verifier": "Noop",
+      "Outputs": [
+        {
+          "Name": "outputs",
+          "StorageSource": "IPFS",
+          "Path": "/outputs"
+        }
+      ]
+    }
+  }
+}

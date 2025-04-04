@@ -57,6 +57,11 @@ PROMPT="A cat and a dog baking a cake together in a kitchen. The cat is carefull
 
 - `PROMPT`: The text prompt for video generation
 - `NEGATIVE_PROMPT`: Text to avoid in generation (default: "")
+  
+  Example negative prompt:
+  ```
+  Bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards
+  ```
 
 ## Notes
 

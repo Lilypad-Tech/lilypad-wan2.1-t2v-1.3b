@@ -42,10 +42,6 @@ RUN pip install --no-cache-dir \
     imageio \
     imageio-ffmpeg
 
-# Set default environment variables
-ENV DEFAULT_PROMPT="A spaceship flying through a cosmic nebula"
-ENV NEGATIVE_PROMPT=""
-
 # Pre-download the Wan2.1 model files during container build
 RUN python -c "from diffusers import AutoencoderKLWan, WanPipeline; import torch; \
     vae = AutoencoderKLWan.from_pretrained('Wan-AI/Wan2.1-T2V-1.3B-Diffusers', subfolder='vae', torch_dtype=torch.float32); \
@@ -64,11 +60,11 @@ RUN mkdir -p /root/.cache/huggingface
 COPY run_wan2.1.py /workspace/run_wan2.1.py
 RUN chmod +x /workspace/run_wan2.1.py
 
-# Set the entrypoint to run the Python script and allow for command-line arguments
+# Set the entrypoint to run the Python script
 ENTRYPOINT ["python", "/workspace/run_wan2.1.py"]
 
-# Set a default command that can be overridden
-CMD ["${DEFAULT_PROMPT}"]
+# Set default CMD (empty, as we're using environment variables now)
+CMD []
 
 # Development stage
 FROM base as development

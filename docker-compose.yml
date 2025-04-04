@@ -16,7 +16,6 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    command: "${DEFAULT_PROMPT:-A spaceship flying through a cosmic nebula}"
 
   wan2.1-dev:
     build:
@@ -27,6 +26,8 @@ services:
     volumes:
       - .:/workspace
       - ./outputs:/outputs
+    environment:
+      - DEFAULT_PROMPT=A spaceship flying through a cosmic nebula
     deploy:
       resources:
         reservations:

@@ -63,6 +63,13 @@ PROMPT="A cat and a dog baking a cake together in a kitchen. The cat is carefull
   Bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards
   ```
 
+### Push to Docker Hub
+
+```bash
+docker build -t hollygrimm/wan2.1-text2video-ipfs:latest --target production .
+docker push hollygrimm/wan2.1-text2video-ipfs:latest
+```
+
 ## Notes
 
 - The module requires at least 24GB of RAM and 1 GPU

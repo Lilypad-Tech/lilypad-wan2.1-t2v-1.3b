@@ -1,12 +1,12 @@
 version: '3.8'
 
 services:
-  wan2-prod:
+  wan2.1-prod:
     build:
       context: .
       dockerfile: Dockerfile
       target: production
-    image: wan2-prod
+    image: wan2.1-prod
     volumes:
       - ./outputs:/outputs
     deploy:
@@ -18,12 +18,12 @@ services:
               capabilities: [gpu]
     command: "${DEFAULT_PROMPT:-A spaceship flying through a cosmic nebula}"
 
-  wan2-dev:
+  wan2.1-dev:
     build:
       context: .
       dockerfile: Dockerfile
       target: development
-    image: wan2-dev
+    image: wan2.1-dev
     volumes:
       - .:/workspace
       - ./outputs:/outputs

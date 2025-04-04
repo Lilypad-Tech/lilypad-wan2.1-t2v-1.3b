@@ -11,12 +11,12 @@
         "Concurrency": 1
       },
       "Docker": {
-        "Entrypoint": ["python", "/workspace/run_wan2.py"],
+        "Entrypoint": ["python", "/workspace/run_wan2.1.py"],
         "EnvironmentVariables": [
           {{ if .prompt }}"PROMPT={{ .prompt | js }}"{{ else }}"PROMPT=A cat and a dog baking a cake together in a kitchen. The cat is carefully measuring flour, while the dog is stirring the batter with a wooden spoon. The kitchen is cozy, with sunlight streaming through the window."{{ end }},
           {{ if .negative_prompt }}"NEGATIVE_PROMPT={{ .negative_prompt | js }}"{{ else }}"NEGATIVE_PROMPT="{{ end }}
         ],
-        "Image": "noryev/wan2-module:latest"
+        "Image": "hollygrimm/wan2.1-text2video-ipfs:latest"
       },
       "Engine": "Docker",
       "Network": {

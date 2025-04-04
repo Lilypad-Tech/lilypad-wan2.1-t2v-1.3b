@@ -18,18 +18,18 @@ This project provides a development container for working with the Wan2.1 text-t
 
 ## Usage
 
-### Using run_wan2.py
+### Using run_wan2.1.py
 
 This script uses the model components downloaded from Hugging Face:
 
 ```bash
-python run_wan2.py "Your prompt here"
+python run_wan2.1.py "Your prompt here"
 ```
 
 Or with environment variables:
 
 ```bash
-PROMPT="A cat and a dog baking a cake together in a kitchen. The cat is carefully measuring flour, while the dog is stirring the batter with a wooden spoon. The kitchen is cozy, with sunlight streaming through the window." python run_wan2.py
+PROMPT="A cat and a dog baking a cake together in a kitchen. The cat is carefully measuring flour, while the dog is stirring the batter with a wooden spoon. The kitchen is cozy, with sunlight streaming through the window." python run_wan2.1.py
 ```
 
 ### Environment Variables

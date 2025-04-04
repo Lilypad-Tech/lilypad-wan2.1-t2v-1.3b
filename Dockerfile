@@ -61,11 +61,11 @@ FROM base as production
 RUN mkdir -p /root/.cache/huggingface
 
 # Copy the Python script into the container
-COPY run_wan2.py /workspace/run_wan2.py
-RUN chmod +x /workspace/run_wan2.py
+COPY run_wan2.1.py /workspace/run_wan2.1.py
+RUN chmod +x /workspace/run_wan2.1.py
 
 # Set the entrypoint to run the Python script and allow for command-line arguments
-ENTRYPOINT ["python", "/workspace/run_wan2.py"]
+ENTRYPOINT ["python", "/workspace/run_wan2.1.py"]
 
 # Set a default command that can be overridden
 CMD ["${DEFAULT_PROMPT}"]

@@ -76,14 +76,14 @@ def main():
         model_id = "Wan-AI/Wan2.1-T2V-1.3B-Diffusers"
 
         # Load VAE with float32 precision for better quality
-        logging.info(f"Loading VAE from {model_id}")
+        logging.info(f"Loading VAE from {model_id} (using local cache)")
         vae = AutoencoderKLWan.from_pretrained(
-            model_id, subfolder="vae", torch_dtype=torch.float32
+            model_id, subfolder="vae", torch_dtype=torch.float32, local_files_only=True
         )
 
         # Load the pipeline with float16 precision for the other components
-        logging.info(f"Loading pipeline from {model_id}")
-        pipe = WanPipeline.from_pretrained(model_id, vae=vae, torch_dtype=torch.float16)
+        logging.info(f"Loading pipeline from {model_id} (using local cache)")
+        pipe = WanPipeline.from_pretrained(model_id, vae=vae, torch_dtype=torch.float16, local_files_only=True)
 
         # Enable automatic CPU offloading
         logging.info("Enabling automatic model CPU offloading")

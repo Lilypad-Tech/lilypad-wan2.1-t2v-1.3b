@@ -1,5 +1,5 @@
 # Base stage with common dependencies
-FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu20.04 as base
+FROM python:3.9-slim-buster AS base
 
 # Set the working directory in the container
 WORKDIR /workspace
@@ -8,25 +8,22 @@ WORKDIR /workspace
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     git \
-    python3 \
-    python3-pip \
-    python3-dev \
     wget \
     ffmpeg \
     libsm6 \
     libxext6 \
+    build-essential \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Set Python alias
-RUN ln -sf /usr/bin/python3 /usr/bin/python && \
-    ln -sf /usr/bin/pip3 /usr/bin/pip
-
-# Update pip and install base Python packages
+# Update pip and install base Python packages with specific numpy version
 RUN pip install --no-cache-dir --upgrade pip setuptools wheel
+RUN pip install --no-cache-dir numpy==1.26.4
 
-# Install PyTorch separately with specific version requirements
+# Install PyTorch with CUDA support via pip
 RUN pip install --no-cache-dir \
-    torch==2.1.0 torchvision==0.16.0 --index-url https://download.pytorch.org/whl/cu121
+    torch==2.1.0 torchvision==0.16.0 --extra-index-url https://download.pytorch.org/whl/cu121
 
 # Install custom version of diffusers from Wan-AI GitHub repository and other dependencies
 RUN pip install --no-cache-dir \
@@ -51,7 +48,7 @@ RUN python -c "from diffusers import AutoencoderKLWan, WanPipeline; import torch
 RUN mkdir -p /outputs && chmod 777 /outputs
 
 # Production stage
-FROM base as production
+FROM base AS production
 
 # Create directories for model cache
 RUN mkdir -p /root/.cache/huggingface
@@ -67,7 +64,7 @@ ENTRYPOINT ["python", "/workspace/run_wan2.1.py"]
 CMD []
 
 # Development stage
-FROM base as development
+FROM base AS development
 
 # Install additional development tools
 RUN apt-get update && apt-get install -y \

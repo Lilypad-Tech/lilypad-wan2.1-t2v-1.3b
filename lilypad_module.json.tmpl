@@ -3,11 +3,11 @@
     "gpu": 1,
     "gpus": [
         {
-            "vram": 32768
+            "vram": 24576
         }
     ],
     "cpu": 2000,
-    "ram": 16000
+    "ram": 24000
   },
   "job": {
     "APIVersion": "V1beta1",
@@ -31,7 +31,8 @@
         "Type": "IPFS"
       },
       "Resources": {
-        "GPU": "1"
+        "GPU": "1",
+        "Memory": 24000
       },
       "Timeout": 3600,
       "Verifier": "Noop",

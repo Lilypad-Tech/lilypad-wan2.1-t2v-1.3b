@@ -53,6 +53,12 @@ Or with environment variables:
 PROMPT="A cat and a dog baking a cake together in a kitchen. The cat is carefully measuring flour, while the dog is stirring the batter with a wooden spoon. The kitchen is cozy, with sunlight streaming through the window." python run_wan2.1.py
 ```
 
+Or using Docker directly:
+
+```bash
+mkdir -p ./outputs && docker run --gpus all -v $(pwd)/outputs:/outputs -e "PROMPT=Two frogs sit on a lilypad, animatedly discussing the wonders and quirks of AI agents. As they ponder whether these digital beings can truly understand their froggy lives, the serene pond serves as a backdrop to their lively conversation." --rm hollygrimm/wan2.1-text2video-ipfs:latest
+```
+
 ### Environment Variables
 
 - `PROMPT`: The text prompt for video generation

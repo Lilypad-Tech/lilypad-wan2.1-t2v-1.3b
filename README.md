@@ -56,7 +56,7 @@ PROMPT="A cat and a dog baking a cake together in a kitchen. The cat is carefull
 Or using Docker directly:
 
 ```bash
-mkdir -p ./outputs && docker run --gpus all -v $(pwd)/outputs:/outputs -e "PROMPT=Two frogs sit on a lilypad, animatedly discussing the wonders and quirks of AI agents. As they ponder whether these digital beings can truly understand their froggy lives, the serene pond serves as a backdrop to their lively conversation." --rm hollygrimm/wan2.1-text2video-ipfs:latest
+mkdir -p ./outputs && docker run --gpus all -v $(pwd)/outputs:/outputs -e "PROMPT=Dawn breaks over a misty pond. A low camera glides from beneath emerald lilypads, slowly rising upward, revealing three jewel-toned frogs. They sit perfectly still, then simultaneously leap into golden morning light, creating concentric ripples across the glassy water surface." -e "NEGATIVE_PROMPT=No urban elements, human presence, artificial lighting, murky water, dead plants, cartoon style, exaggerated colors, winter scene, fish jumping, or camera shake." --rm hollygrimm/wan2.1-text2video-ipfs:latest
 ```
 
 ### Environment Variables

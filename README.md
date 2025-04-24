@@ -16,7 +16,7 @@ This project provides a module for running the Wan2.1 text-to-video model on the
 To run on the local development network:
 
 ```
-go run . run --network dev github.com/hollygrimm/module-wan2.1:<COMMIT_HASH> --web3-private-key <JOB_CREATOR_PRIVATE_KEY> -i prompt="your prompt here" -i negative_prompt="your negative prompt here"
+go run . run --network dev github.com/Lilypad-Tech/lilypad-wan2.1-t2v-1.3b:<COMMIT_HASH> --web3-private-key <JOB_CREATOR_PRIVATE_KEY> -i prompt="your prompt here" -i negative_prompt="your negative prompt here"
 ```
 
 Replace `<COMMIT_HASH>` with the latest commit hash from this repository and `<JOB_CREATOR_PRIVATE_KEY>` with the Job Creator Private Key found in the lilypad repository file `.local.dev`.
@@ -26,15 +26,15 @@ Replace `<COMMIT_HASH>` with the latest commit hash from this repository and `<J
 To run on the main Lilypad network:
 
 ```
-lilypad run github.com/hollygrimm/module-wan2.1:<COMMIT_HASH> -i prompt="your prompt here" -i negative_prompt="your negative prompt here"
+lilypad run github.com/Lilypad-Tech/lilypad-wan2.1-t2v-1.3b:<COMMIT_HASH> -i prompt="your prompt here" -i negative_prompt="your negative prompt here"
 ```
 
 ## Development Setup
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/hollygrimm/module-wan2.1.git
-   cd module-wan2.1
+   git clone https://github.com/Lilypad-Tech/lilypad-wan2.1-t2v-1.3b  
+   cd lilypad-wan2.1-t2v-1.3b
    ```
 
 2. If using VS Code with Dev Containers, open the project and click "Reopen in Container" when prompted, or run the "Dev Containers: Reopen in Container" command from the Command Palette.
@@ -56,7 +56,7 @@ PROMPT="A cat and a dog baking a cake together in a kitchen. The cat is carefull
 Or using Docker directly:
 
 ```bash
-mkdir -p ./outputs && docker run --gpus all -v $(pwd)/outputs:/outputs -e "PROMPT=Dawn breaks over a misty pond. A low camera glides from beneath emerald lilypads, slowly rising upward, revealing three jewel-toned frogs. They sit perfectly still, then simultaneously leap into golden morning light, creating concentric ripples across the glassy water surface." -e "NEGATIVE_PROMPT=No urban elements, human presence, artificial lighting, murky water, dead plants, cartoon style, exaggerated colors, winter scene, fish jumping, or camera shake." --rm hollygrimm/wan2.1-text2video-ipfs:latest
+mkdir -p ./outputs && docker run --gpus all -v $(pwd)/outputs:/outputs -e "PROMPT=Dawn breaks over a misty pond. A low camera glides from beneath emerald lilypads, slowly rising upward, revealing three jewel-toned frogs. They sit perfectly still, then simultaneously leap into golden morning light, creating concentric ripples across the glassy water surface." -e "NEGATIVE_PROMPT=No urban elements, human presence, artificial lighting, murky water, dead plants, cartoon style, exaggerated colors, winter scene, fish jumping, or camera shake." --rm lilypadnetwork/lilypad-wan2.1-t2v-1.3b:latest
 ```
 
 ### Environment Variables
@@ -72,8 +72,8 @@ mkdir -p ./outputs && docker run --gpus all -v $(pwd)/outputs:/outputs -e "PROMP
 ### Push to Docker Hub
 
 ```bash
-docker build -t hollygrimm/wan2.1-text2video-ipfs:latest --target production .
-docker push hollygrimm/wan2.1-text2video-ipfs:latest
+docker build -t lilypadnetwork/lilypad-wan2.1-t2v-1.3b:latest --target production .
+docker push lilypadnetwork/lilypad-wan2.1-t2v-1.3b:latest
 ```
 
 ## Notes
